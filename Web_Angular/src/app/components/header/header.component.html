@@ -1,0 +1,42 @@
+
+
+<mat-toolbar color="primary">
+  <span>Web Site</span>
+
+
+  <ul class="header-menu" style="margin-left: auto;" *ngIf="!(isHandset$ | async)">
+    <li>
+      <a routerLink="/" routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:true}" 
+      fxHide fxShow.gt-sm>Anasayfa</a>
+    </li>
+    <li>
+      <a routerLink="/customer" routerLinkActive="active" fxHide fxShow.gt-sm>Müşteriler</a>
+    </li>
+    <li>
+      <a routerLink="/products" routerLinkActive="active" fxHide fxShow.gt-sm>Ürünler</a>
+    </li>
+    <li>
+      <a routerLink="/other" routerLinkActive="active" fxHide fxShow.gt-sm>Diğer</a>
+    </li>
+    <!--   
+    <li>
+      <a routerLink="/login" routerLinkActive="active" fxHide fxShow.gt-sm>Login</a>
+    </li> 
+   --> 
+
+  </ul>
+  <button mat-button [mat-menu-trigger-for]="menu" fxShow fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/">Anasayfa</button>
+  <button mat-menu-item routerLink="/customer">Müşteri</button>
+  <button mat-menu-item routerLink="/products">Ürünler</button>
+  <button mat-menu-item routerLink="/other">Diğer</button>
+  <button mat-menu-item routerLink="/other">Login</button>
+
+
+</mat-menu>

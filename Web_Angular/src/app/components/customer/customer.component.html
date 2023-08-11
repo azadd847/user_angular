@@ -1,0 +1,126 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+
+<div class="container mt-4" style="margin-top: 0; transform: translateY(-45px);">
+  <div class="card" style="margin-bottom: 0px;">
+    <div class="float-right right-align position: fixed">
+      <button class="btn btn-primary btn-sm" (click)="showFormModal()">ADD</button>
+      <i class="fas fa-sync-alt ml-2 refresh-icon btn btn-success" (click)="refreshPage()"></i>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': isFormModalVisible || isEditMode}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ isEditMode ? 'Edit Customer' : 'Add Customer' }}</h5>
+        <button type="button" class="close" aria-label="Close" (click)="hideFormModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="register()">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" placeholder="Enter First Name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" placeholder="Enter Last Name">
+          </div>
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" [(ngModel)]="dob" name="dob" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Gender</label>
+            <select [(ngModel)]="gender" name="gender" class="form-control">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" [(ngModel)]="address" name="address" class="form-control" placeholder="Enter Address">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Submit' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center" style="margin: 10px; transform: translateY(-100px);">
+  <h1 style="margin-right: 20px;">Müşteri Tablosu</h1>
+  <div class="form-group" style="margin-right: 20px;">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+  </div>
+  <div class="dropdown" (click)="dropdownClicked($event)" style="position: relative;">
+    <div class="dropdown-menu" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="sortDropdown"
+      style="position: absolute; right: 0; transform: translateY(-10px);"> 
+      <div *ngIf="isDropdownOpen" class="dropdown-item" style="display: flex; align-items: center; justify-content: flex-start; padding: 0;">
+        <input type="radio" id="sortByFirstNameAZ" name="sortOrder" (click)="sortCustomers('firstnameAsc'); toggleDropdown();"
+          style="margin-right: 5px;">
+        <label for="sortByFirstNameAZ" style="margin: 0;">First Name A-Z</label>
+      </div>
+      <div *ngIf="isDropdownOpen" class="dropdown-item" style="display: flex; align-items: center; justify-content: flex-start; padding: 0;">
+        <input type="radio" id="sortByFirstNameZA" name="sortOrder" (click)="sortCustomers('firstnameDesc'); toggleDropdown();"
+          style="margin-right: 5px;">
+        <label for="sortByFirstNameZA" style="margin: 0;">First Name Z-A</label>
+      </div>
+    </div>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown"
+      [attr.aria-expanded]="isDropdownOpen ? 'true' : 'false'" (click)="toggleDropdown()"
+      style="transform: translateY(-15px);">
+      Sırala
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="d-flex justify-content-center" style="margin-top: 0; transform: translateY(-135px);">
+  <div class="table-responsive" style="margin-top: 30px; ">
+    <table class="table text-center custom-table bordered-table" style="width: 50%; margin: 5px auto;">
+      <thead class="cell"  style="  border-bottom: 1px solid black;">
+        <tr>
+          <th class="sticky-header" style="top: -20px;">AD</th>
+          <th class="sticky-header" style="top: -20px;">SOYAD</th>
+          <th class="sticky-header" style="top: -20px;">CİNSİYET</th>
+          <th class="sticky-header" style="top: -20px;">DOĞUM TARİHİ</th>
+          <th class="sticky-header" style="top: -20px;">Adres</th>
+          <th class="sticky-header" style="top: -20px;">İŞLEMLER</th>
+        </tr>
+      </thead>
+      <tbody class="scrollable-body" >
+        <tr *ngFor="let customer of getFilteredCustomers()" >
+          <ng-container *ngIf="customer.firstName && customer.lastName && customer.gender && customer.dob && customer.address" >
+            <td  style="  border-left: 1px solid black;">{{ customer.firstName | uppercase }}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.gender }}</td>
+            <td>{{ customer.dob }}</td>
+            <td>{{ customer.address }}</td>
+            <td style="  border-right: 1px solid black;">
+              <button type="button" class="btn btn-success mr-1" (click)="setUpdate(customer)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button type="button" class="btn btn-danger" (click)="setDelete(customer)">
+                <i class="fas fa-trash " ></i>
+              </button>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

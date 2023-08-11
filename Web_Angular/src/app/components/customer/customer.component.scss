@@ -1,0 +1,179 @@
+.btn {
+  margin-top: 10px;
+  border-top: none;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: darkblue;
+}
+.btn-primary:active {
+  background-color: navy;
+}
+
+.form-group span.fa-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-dialog {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+}
+.form-group label {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.modal-content {
+  background-color: #f0f0f0;
+}
+.modal-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary {
+  border-color: #28a745;
+}
+.btn-primary:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-sm {
+  width: 90px;
+  height: 40px;
+  margin-left: auto;
+}
+
+.card {
+  border: none;
+  box-shadow: none;
+}
+
+.table td {
+  padding: 0;
+  vertical-align: middle;
+}
+.table thead th {
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+div {
+  color: black;
+  padding: 20px;
+}
+
+.btn-success {
+  font-size: 20px;
+}
+
+.customer-actions {
+  text-align: right;
+}
+.customer-info {
+  text-align: left;
+}
+.customer-row {
+  margin-bottom: 20px;
+}
+.customer-row:last-child {
+  margin-bottom: 20px;
+}
+
+th {
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.form-group {
+  margin-left: 20px;
+}
+
+.refresh-icon {
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.right-align {
+  display: flex;
+  justify-content: flex-end;
+}
+.dropdown {
+  margin-right: 1px;
+  padding: 0;
+}
+.dropdown-menu{
+  // margin-bottom: 500px;
+  transform: translateY(-60px);
+}
+.container {
+  position: sticky;
+  top: 0;
+}
+
+.custom-table th {
+  border: 1px solid black;
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+.custom-table {
+  border-collapse: collapse;
+}
+
+.cell {
+  border: 1px solid black;
+  background-color: black;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.table-responsive {
+  overflow-y: auto;
+  height: 500px;
+  position: relative;
+}
+.table-responsive thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  
+}
+th {
+  background: #eee;
+}
+.table-responsive::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,40 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+<main>
+  <h1 class="page-title">Diğer</h1>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>
+          <button (click)="editUser(user)">Edit</button>
+          <button (click)="deleteUser(user)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="editingUser">
+    <h2>Edit User</h2>
+    <form (submit)="saveEditedUser()">
+      <label for="editedUsername">Username:</label>
+      <input type="text" id="editedUsername" [(ngModel)]="editedUser.username" name="editedUsername" required>
+      <label for="editedEmail">Email:</label>
+      <input type="email" id="editedEmail" [(ngModel)]="editedUser.email" name="editedEmail" required>
+      <label for="editedPassword">Password:</label>
+      <input type="password" id="editedPassword" [(ngModel)]="editedUser.password" name="editedPassword" required>
+      <button type="submit">Save</button>
+      <button >Cancel</button>
+    </form>
+  </div>
+</main>

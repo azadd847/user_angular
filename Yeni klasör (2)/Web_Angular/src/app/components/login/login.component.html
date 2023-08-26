@@ -1,0 +1,21 @@
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="username" name="username" required>
+  
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+
+
+      <button type="submit" (click)="onLogin()">Login</button>
+
+
+      <label for="">If you are not registered:</label>
+
+      <button  type="submit" (click)="onSignUp()">Sign Up</button>
+      
+    </form>
+  </div>
+  
